@@ -1,5 +1,8 @@
 
-*** Challenge ***
+# Frontend challenge
+
+
+## Challenge 
 
 You are working for a startup who are working with IOT devices. 
 They want to build a mobile app (web or native) to monitor the water level of plants and action the water system remotely. You have been brought on as the first FE engineer and there is no FE yet in place. 
@@ -8,7 +11,7 @@ The startup want to validate the concept by doing some user testing and have ask
 A skeleton web app with a lightweight express/graphql server exists with queries/mutations that will serve the data you need in (/server). 
 
 
-*** Tasks ***
+## Tasks
 
 1. Build a home screen / dashboard and show the currently logged in user.
 2. Display a list of paired moisture sensors (for plants) and paired taps. You can get the list from the ```devices``` query. 
@@ -18,13 +21,13 @@ A skeleton web app with a lightweight express/graphql server exists with queries
 There's a `requestDevices` method in `/utils` as an example to get you started. The server is in the ‘/server’ dir. You can scrap the whole app if you want but this server will serve the data you need. Feel free to change anything you want. 
 
 
-*** Stretch ***
+## Stretch
 
 1. Build a sign in screen and use the `user` query to mock a sign in by passing one of the user/password combinations and store an appropriate token to keep the user signed in. Localstorage is fine. 
 2. Add some data to capture the ideal moisture level for a plant when you’re adding it. You could modify the mock response or create a new endpoint to lookup. Do whatever you think makes more sense and then we can discuss.
 
 
-*** Keep in mind ***
+## Keep in mind
 
 * This should be a react app with typescript. Feel free to use the CRA provided or any other boilerplate you prefer. If you're building a native app then you'll need to get a new boilerplate. 
 * Use redux if you want to but you might decide that it’s not needed. Make a call and we can discuss your choice when you talk us through your work. 
