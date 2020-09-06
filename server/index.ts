@@ -1,17 +1,17 @@
-var express = require('express');
-var graphqlHTTP = require('express-graphql');
-var { buildSchema } = require('graphql');
+const express = require('express');
+const graphqlHTTP = require('express-graphql');
+const { buildSchema } = require('graphql');
 
 const cors = require('cors');
 
-var { plants, devices, users } = require('./data');
+const { plants, devices, users } = require('./data');
 
 const createdNewId = (array) => {
-  const highest = array.sort((itemA, itemB) => itemA.id - itemB.id); 
+  const highest = array.sort((itemA, itemB) => itemA.id - itemB.id);
   return highest.id + 1;
 }
 
-var schema = buildSchema(`
+const schema = buildSchema(`
   type Plant {
     name: String,
     id: Int
@@ -41,7 +41,7 @@ var schema = buildSchema(`
   
 `);
 
-var root = {
+const root = {
   plants: () => plants,
   devices: () => devices,
   users: () => users,
@@ -51,7 +51,7 @@ var root = {
   }
 };
 
-var server = express();
+const server = express();
 server.use(cors());
 server.use('/graphql', graphqlHTTP({
   schema: schema,

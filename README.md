@@ -1,40 +1,82 @@
+# FS App Test
 
-# Frontend challenge
+## Introduction
+
+The full stack code for the FS App test lending app. Built in [React](https://reactjs.org/).
+
+## Requirements
+
+- [Node](https://nodejs.org/en/).
+- [npm](https://www.npmjs.com/package/npm).
+
+## Getting Started
+
+**1. Clone Git Repo.**
+
+```
+$ git clone https://github.com/kkbokyere/fs-challenge.git
+```
+
+**2. Install Dependencies.**
+
+Once that's all done, cd into the frontend-interview-challenge web directory and install the depedencies:
+
+```
+$ cd frontend-interview-challenge/web
+$ yarn install
+```
+
+**3. Run Application.**
+
+Once the node modules have all been installed and npm has done it's thing, that's it. To open up a local development environment, run:
+
+```
+$ yarn start
+```
+
+Once the server is up and running, navigate to [localhost:3000](http://localhost:3000).
+
+## Testing
+
+[Jest](https://jestjs.io/) is the test runner used, with [React Testing Library](https://testing-library.com/docs/react-testing-library/) is testing library used for testing components. To run test use the following command:
+
+```
+$ yarn test
+```
+
+## Deployment
+
+No CI/CD pipeline at the moment.
+
+# Tools Used
+
+- [React](https://reactjs.org/)
+- [Create React App](https://create-react-app.dev/)
+- [Redux](https://redux.js.org)
+- [Redux Thunk](https://github.com/reduxjs/redux-thunk)
+- [CSS Modules](https://github.com/css-modules/css-modules)
+- [Material UI](https://material-ui.com/)
 
 
-## Challenge 
+# Architecture 
 
-You are working for a startup who are working with IOT devices. 
-They want to build a mobile app (web or native) to monitor the water level of plants and action the water system remotely. You have been brought on as the first FE engineer and there is no FE yet in place. 
-The startup want to validate the concept by doing some user testing and have asked for a POC to be built. 
+Everything about my approach, is forward thinking towards scaling this application.
 
-A skeleton web app with a lightweight express/graphql server exists with queries/mutations that will serve the data you need in (/server). 
+## State Management vs UI
+- The idea is to simply think about a high level separation of concern. If Redux was to become obsolete, or we decided to use a different state management library, the 'state' folder can simple be updated to accommodate this. And it can be come in small incremental pieces.
+- The Views folder, can be thought of as just the UI and should not intentionally contain any state management logic.
 
+## Ducks
+- I wanted to create a certain level of separation of concern, without having to over engineer.
+- The solution I decided to use was the [Ducks](https://github.com/erikras/ducks-modular-redux) concept, but in a more scalable way which essentially allowed me to bundle reducers, actions and action types.
+- For the purpose of this simple test, I kept the Ducks modular approach simple as one feature has simple logic. But if the app was to get more complicated, I would consider the following [re-ducks approach](https://github.com/alexnm/re-ducks).
 
-## Tasks
+# Improvements / Retrospective Review
 
-1. Build a home screen / dashboard and show the currently logged in user.
-2. Display a list of paired moisture sensors (for plants) and paired taps. You can get the list from the ```devices``` query. 
-3. Build an overlay or similar to display the pair new device flow. Use the `addDevice` mutation.
-4. Use the `plants` query to display a dropdown (or typeahead if you want to be a bit more fancy) of plants when adding a new device/sensor (a sensor belongs to a plant or more than one plant in a small area).
-
-There's a `requestDevices` method in `/utils` as an example to get you started. The server is in the `/server` dir. You can scrap the whole app if you want but this server will serve the data you need. Feel free to change anything you want. 
-
-
-## Stretch
-
-1. Build a sign in screen and use the `user` query to mock a sign in by passing one of the user/password combinations and store an appropriate token to keep the user signed in. Localstorage is fine. 
-2. Add some data to capture the ideal moisture level for a plant when you’re adding it. You could modify the mock response or create a new endpoint to lookup. Do whatever you think makes more sense and then we can discuss.
-
-
-## Keep in mind
-
-* This should be a react app with typescript. Feel free to use the CRA provided or any other boilerplate you prefer. If you're building a native app then you'll need to get a new boilerplate. 
-* Use redux if you want to but you might decide that it’s not needed. Make a call and we can discuss your choice when you talk us through your work. 
-* Aim to complete at least 2 of the tasks but complete as many more as you like. We don't want you to spend days on this task. See how much you can get done in a few hours and we can discuss what you might have done if you had more time. 
-* Write any tests that are useful. We’re not after loads of coverage. 
-* There are no designs to work to. We're more concerned with functionality at this stage. You will have to make some UI / layout choices.
-* If you have questions feel free to ask them. 
-
-
-Have fun. We look forward to seeing your work!
+- Would have used Cypress for E2E testing
+- 100% test coverage
+- create a better Error handler - only catching one simple error scenario
+- should allow update list if its the same city
+- implement typescript to better type definitions
+- Would have considered creating a proper [SMACSS](http://smacss.com/) architecture for base CSS styles such as layout. 
+- better styling
