@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The full stack code for the FS App test lending app. Built in [React](https://reactjs.org/).
+The full stack code for the FS App test lending app. Built in [React](https://reactjs.org/). The Details on the task can be found [here](README-TASK.md)
 
 ## Requirements
 
