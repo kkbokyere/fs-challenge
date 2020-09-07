@@ -48,42 +48,43 @@ let plants = [
 
 const devices = [
   {
-    id: 1, 
-    type: "sensor", 
-    plantId: 1, 
+    id: 1,
+    type: "sensor",
+    plantId: 1,
     label: "My chilli plants"
   },
   {
-    id: 2, 
-    type: "sensor", 
-    plantId: 9, 
+    id: 2,
+    type: "sensor",
+    plantId: 9,
     label: "My apple tree"
   },
   {
-    id: 3, 
-    type: "tap", 
+    id: 3,
+    type: "tap",
+    plantId: 3,
     label: "Main tap"
   }
-]
+];
 
 
 const users = [{
-  username: "Tom Cruise", 
+  username: "Tom Cruise",
   password: "thisappwillselfdistruct"
-}, 
+},
 {
-  username: "Eddie Murphy", 
+  username: "Eddie Murphy",
   password: "beveryhillscop3wasntgood"
 },
 {
-  username: "Marty Mcfly", 
+  username: "Marty Mcfly",
   password: "heaaaavy"
 },
 {
-  username: "Katniss Everdeen", 
+  username: "Katniss Everdeen",
   password: "mockingjay2010"
-}]
+}];
 
-module.exports.plants = plants; 
-module.exports.devices = devices; 
-module.exports.users = users; 
+module.exports.plants = plants;
+module.exports.devices = devices;
+module.exports.users = users;

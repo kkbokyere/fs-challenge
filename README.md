@@ -76,7 +76,6 @@ Everything about my approach, is forward thinking towards scaling this applicati
 - Would have used Cypress for E2E testing
 - 100% test coverage
 - create a better Error handler - only catching one simple error scenario
-- should allow update list if its the same city
 - implement typescript to better type definitions
 - Would have considered creating a proper [SMACSS](http://smacss.com/) architecture for base CSS styles such as layout. 
 - better styling

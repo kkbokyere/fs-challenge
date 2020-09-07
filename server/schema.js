@@ -18,12 +18,6 @@ const schema = buildSchema(`
     plantId: ID!
   }
 
-  input DeviceInput {
-    name: String,
-    type: String,
-    plantId: ID!
-  }
-
   type Query {
     plants: [Plant],
     devices: [Device]
@@ -31,7 +25,7 @@ const schema = buildSchema(`
   }
   
   type Mutation {
-    addDevice(device: DeviceInput): [Device]
+    addDevice(type: String!, plantId: ID!, label: String!): Device
   }
   
 `);
