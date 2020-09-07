@@ -1,0 +1,53 @@
+$black: #000000;
+$white: #ffffff;
+$grey: #F4F6F7;
+
+//Brand Colors
+$primary_green: #71963D;
+$primary_light_green: #92C244;
+$primary_lighter_green: #C1D776;
+$primary_blue: #1D9BD8;
+$primary_dark_grey: #212E38;
+
+// TEXT COLOURS
+$heading-primary: $primary_blue;
+$heading-secondary: $black;
+$main-body: $black;
+
+// GLOBALS
+$small-mobile-width: 480px;
+$mobile-width: 750px;
+$tablet-width: 1024px;
+$desktop-width: 1240px;
+
+
+//mixins
+@mixin small-mobile {
+  @media screen and (max-width: #{$small-mobile-width}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: #{$mobile-width}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: #{$mobile-width + 1}) and (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin tablet-desktop {
+  @media screen and (min-width: #{$mobile-width + 1}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: #{$tablet-width + 1}) {
+    @content;
+  }
+}

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout Tests should render Layout 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  />
+</DocumentFragment>
+`;
