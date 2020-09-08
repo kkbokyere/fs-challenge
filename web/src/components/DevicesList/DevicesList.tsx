@@ -2,12 +2,14 @@ import React from 'react';
 import { useQuery } from "@apollo/client";
 import styles from './DevicesList.module.scss'
 import {GET_DEVICES} from "../../queries/devices";
+import DeviceListItem from "../DeviceListItem";
 
 type Device = {
     id: any,
     plantId: any,
     label: string,
     type: string,
+    plant: object,
 }
 
 interface DevicesData {
@@ -31,16 +33,16 @@ const DevicesList = () => {
             <h3>Sensor Devices</h3>
             {data.devices
                 .filter(({ type }) => type ==='sensor')
-                .map(({id, label}) => {
-                return <li key={id}>{label}</li>
+                .map((device) => {
+                return <DeviceListItem key={device.id} {...device}/>
             })}
 
             <h3>Tap Devices</h3>
 
             {data.devices
                 .filter(({ type }) => type === 'tap')
-                .map(({id, label, type}) => {
-                return <li key={id}>{label}</li>
+                .map((device) => {
+                return <DeviceListItem key={device.id} {...device}/>
             })}
         </div>
     );

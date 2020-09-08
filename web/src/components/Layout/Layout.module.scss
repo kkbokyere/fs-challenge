@@ -2,6 +2,7 @@
 .container {
   margin: auto;
   padding: 50px 20px;
+  background: white;
   @include desktop {
     width: $mobile-width;
     padding: auto;
