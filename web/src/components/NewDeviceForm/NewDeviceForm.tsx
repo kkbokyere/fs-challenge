@@ -51,7 +51,8 @@ const NewDeviceForm = () => {
         <form onSubmit={handleOnSubmitForm} >
             <div>
             <TextField
-                id="label-select"
+                data-testid="label-input"
+                id="label-input"
                 label="Device Label"
                 defaultValue={label}
                 onChange={handleOnChangeLabel}
@@ -59,6 +60,7 @@ const NewDeviceForm = () => {
             </div>
             <div>
             <Select
+                data-testid="type-select"
                 id="type-select"
                 value={type}
                 onChange={handleOnChangeType}
@@ -69,6 +71,7 @@ const NewDeviceForm = () => {
             </div>
             <div>
             <Select
+                data-testid="plant-select"
                 id="plant-select"
                 value={plant}
                 onChange={handleOnChangePlant}
@@ -76,8 +79,8 @@ const NewDeviceForm = () => {
                 {data && data.plants.map(plant => <MenuItem key={plant.id} value={plant.id}>{plant.name}</MenuItem>)}
             </Select>
             </div>
-            <Button variant="contained" color="primary" type="submit">
-                Primary
+            <Button data-testid="submit-btn" variant="contained" color="primary" type="submit">
+                Add Device
             </Button>
         </form>
         </div>
