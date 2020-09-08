@@ -4,8 +4,8 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 import styles from './DevicesList.module.scss'
 import {GET_DEVICES} from "../../queries/devices";
-import DeviceListItem from "../DeviceListItem";
-import {Device} from "../../types";
+import {Device, DeviceTypeEnum} from "../../types";
+import List from "./List";
 
 interface DevicesData {
     devices: Device[],
@@ -14,29 +14,19 @@ interface DevicesData {
 
 const DevicesList = () => {
     const { data, loading } = useQuery<DevicesData>(GET_DEVICES);
-
     if (loading) {
         return <CircularProgress />;
     }
 
     if (!data) return <div>No data!</div>;
     return (
-        <div className={styles.devicesList}>
+        <React.Fragment>
             <h2>Devices List</h2>
-            <h3>Sensor Devices</h3>
-            {data.devices
-                .filter(({ type }) => type ==='SENSOR')
-                .map((device) => {
-                return <DeviceListItem key={device.id} {...device}/>
-            })}
-
-            <h3>Tap Devices</h3>
-            {data.devices
-                .filter(({ type }) => type === 'TAP')
-                .map((device) => {
-                return <DeviceListItem key={device.id} {...device}/>
-            })}
+            <div className={styles.devicesList} data-testid="devices-list">
+            <List devices={data.devices} filterType={DeviceTypeEnum.SENSOR} heading="Sensor Devices"/>
+            <List devices={data.devices} filterType={DeviceTypeEnum.TAP} heading="Tap Devices"/>
         </div>
+        </React.Fragment>
     );
 };
 

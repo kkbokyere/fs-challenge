@@ -27,6 +27,7 @@ function App() {
           <DevicesList/>
       </Layout>
         <Modal
+            data-testid="new-device-modal"
             open={openModal}
             onClose={handleClose}
             aria-labelledby="simple-modal-title"

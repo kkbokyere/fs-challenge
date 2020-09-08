@@ -4,7 +4,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 
 import Select from '@material-ui/core/Select';
-import {Plant} from "../../types";
+import {Plant, DeviceTypeEnum} from "../../types";
 import {useQuery, useMutation} from "@apollo/client";
 import {GET_PLANTS} from "../../queries/plants";
 import {ADD_DEVICE, GET_DEVICES} from "../../queries/devices";
@@ -25,7 +25,7 @@ const NewDeviceForm = () => {
 
     const [plant, setPlant] = useState('');
     const [label, setLabel] = useState('');
-    const [type, setType] = useState('SENSOR');
+    const [type, setType] = useState(DeviceTypeEnum.SENSOR);
 
     if (loading) {
         return null;
@@ -47,13 +47,13 @@ const NewDeviceForm = () => {
         addDevice({ variables: { label, type, plantId: plant} });
     };
     return (
-        <div className={styles.form}>
+        <div className={styles.form} data-testid="new-device-form">
         <form onSubmit={handleOnSubmitForm} >
             <div>
             <TextField
-                id="label"
+                id="label-select"
                 label="Device Label"
-                defaultValue="Default Value"
+                defaultValue={label}
                 onChange={handleOnChangeLabel}
             />
             </div>
@@ -63,8 +63,8 @@ const NewDeviceForm = () => {
                 value={type}
                 onChange={handleOnChangeType}
             >
-                <MenuItem value="SENSOR">Sensor</MenuItem>
-                <MenuItem value="TAP">Tap</MenuItem>
+                <MenuItem value={DeviceTypeEnum.SENSOR}>Sensor</MenuItem>
+                <MenuItem value={DeviceTypeEnum.TAP}>Tap</MenuItem>
             </Select>
             </div>
             <div>

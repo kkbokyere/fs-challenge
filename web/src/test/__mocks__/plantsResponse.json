@@ -1,0 +1,50 @@
+{
+  "data": {
+    "plants": [
+      {
+        "id": "1",
+        "name": "Chilli"
+      },
+      {
+        "id": "2",
+        "name": "Tomato"
+      },
+      {
+        "id": "3",
+        "name": "Sunflower"
+      },
+      {
+        "id": "4",
+        "name": "Avocado"
+      },
+      {
+        "id": "5",
+        "name": "Jasmine"
+      },
+      {
+        "id": "6",
+        "name": "Pepper"
+      },
+      {
+        "id": "7",
+        "name": "Plum"
+      },
+      {
+        "id": "8",
+        "name": "Pear"
+      },
+      {
+        "id": "9",
+        "name": "Apple"
+      },
+      {
+        "id": "10",
+        "name": "Hydrangea"
+      },
+      {
+        "id": "11",
+        "name": "Carrot"
+      }
+    ]
+  }
+}

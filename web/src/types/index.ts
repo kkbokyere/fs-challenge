@@ -1,3 +1,8 @@
+export const DeviceTypeEnum = {
+    SENSOR: 'SENSOR',
+    TAP: 'TAP'
+};
+
 export type Device = {
     id: any,
     plantId: any,

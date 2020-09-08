@@ -59,12 +59,9 @@
   "jest": {
     "moduleNameMapper": {
       "^@root(.*)$": "<rootDir>/src$1",
-      "^@components(.*)$": "<rootDir>/src/views/components$1",
-      "^@ducks(.*)$": "<rootDir>/src/state/ducks$1",
-      "^@styles(.*)$": "<rootDir>/src/views/styles$1",
-      "^@containers(.*)$": "<rootDir>/src/views/containers$1",
-      "^@state(.*)$": "<rootDir>/src/state$1",
-      "^@views(.*)$": "<rootDir>/src/views$1"
+      "^@components(.*)$": "<rootDir>/src/components$1",
+      "^@styles(.*)$": "<rootDir>/src/styles$1",
+      "^@containers(.*)$": "<rootDir>/src/containers$1"
     }
   }
 }
