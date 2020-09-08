@@ -2,6 +2,10 @@ const { v4: uuidv4 } = require('uuid');
 const { plants, devices, users } = require('./data');
 
 const resolvers = {
+    DeviceTypeEnum: {
+      SENSOR: 'sensor',
+        TAP: 'tap'
+    },
     Query: {
         plants: () => plants,
         devices: () => devices,

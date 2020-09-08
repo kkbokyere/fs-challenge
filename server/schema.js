@@ -1,11 +1,14 @@
 const { ApolloServer, gql } = require('apollo-server-express');
 
-const typeDefs = gql`
-  type Plant {
-    name: String,
-    id: ID!
+const typeDefs = gql`    
+  enum DeviceTypeEnum {
+      SENSOR
+      TAP
   }
-    
+  type Plant {
+      name: String,
+      id: ID!
+  }
   type User {
     username: String,
     password: String
@@ -13,12 +16,11 @@ const typeDefs = gql`
 
   type Device {
     id: ID!, 
-    type: String,
+    type: DeviceTypeEnum,
     label: String,
     plant: Plant
     plantId: ID!
   }
-
   type Query {
     plants: [Plant],
     devices: [Device]
@@ -27,7 +29,7 @@ const typeDefs = gql`
   }
   
   type Mutation {
-    addDevice(type: String!, plantId: ID!, label: String!): Device
+    addDevice(type: DeviceTypeEnum!, plantId: ID!, label: String!): Device
   }
   
 `;
