@@ -1,8 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '../src/test/helper'
 import App from './App';
-
-
 import {GET_DEVICES, ADD_DEVICE} from "./queries/devices";
 import {GET_USER_BY_USERNAME} from "./queries/users";
 import devicesResponse from './test/__mocks__/devicesResponse'
@@ -39,6 +37,7 @@ describe('App Tests', () => {
     };
     it('should render initial App', async () => {
         const { asFragment } = setup();
+
         const addDeviceButton = await screen.findByText('Add Device');
         const username = await screen.findByText('You\'re logged in as: Tom Cruise');
 

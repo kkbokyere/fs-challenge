@@ -15,7 +15,7 @@ interface DevicesData {
 const DevicesList = () => {
     const { data, loading } = useQuery<DevicesData>(GET_DEVICES);
     if (loading) {
-        return <CircularProgress />;
+        return <CircularProgress data-testid="loading-spinner"/>;
     }
 
     if (!data) return <div>No data!</div>;

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import styles from './Header.module.scss'
 import {useQuery} from "@apollo/client";
@@ -21,7 +22,7 @@ const Header = () => {
         errorPolicy: "all"
     });
     if (loading) {
-        return null
+        return <CircularProgress data-testid="loading-spinner"/>
     }
     if (error) {
         return <p>Error :(</p>
