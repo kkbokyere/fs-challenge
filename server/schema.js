@@ -1,6 +1,6 @@
-const { buildSchema } = require('graphql');
+const { ApolloServer, gql } = require('apollo-server-express');
 
-const schema = buildSchema(`
+const typeDefs = gql`
   type Plant {
     name: String,
     id: ID!
@@ -30,6 +30,6 @@ const schema = buildSchema(`
     addDevice(type: String!, plantId: ID!, label: String!): Device
   }
   
-`);
+`;
 
-module.exports = schema;
+module.exports = typeDefs;

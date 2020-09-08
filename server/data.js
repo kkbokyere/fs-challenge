@@ -1,68 +1,68 @@
 let plants = [
   {
     name: "Chilli",
-    id: 1
+    id: "1"
   },
   {
     name: "Tomato",
-    id: 2
+    id: "2"
   },
   {
     name: "Sunflower",
-    id: 3
+    id: "3"
   },
   {
     name: "Avocado",
-    id: 4
+    id: "4"
   },
   {
     name: "Jasmine",
-    id: 5
+    id: "5"
   },
   {
     name: "Pepper",
-    id: 6
+    id: "6"
   },
   {
     name: "Plum",
-    id: 7
+    id: "7"
   },
   {
     name: "Pear",
-    id: 8
+    id: "8"
   },
   {
     name: "Apple",
-    id: 9
+    id: "9"
   },
   {
     name: "Hydrangea",
-    id: 10
+    id: "10"
   },
   {
     name: "Carrot",
-    id: 11
+    id: "11"
   }
 ];
 
 
 const devices = [
   {
-    id: 1,
+    id: "1",
     type: "sensor",
-    plantId: 1,
+    plantId: "1",
     label: "My chilli plants"
   },
   {
-    id: 2,
+    id: "2",
     type: "sensor",
-    plantId: 9,
+    plantId: "9",
     label: "My apple tree"
   },
   {
-    id: 3,
+    id: "3",
     type: "tap",
-    plantId: 3,
+    plantId: "3",
     label: "Main tap"
   }
 ];
