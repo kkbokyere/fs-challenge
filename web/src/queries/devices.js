@@ -12,7 +12,7 @@ export const GET_DEVICES = gql`
 `;
 
 export const ADD_DEVICE = gql`
-    mutation AddDevice($label: String!, $plantId: ID!, $type: String!) {
+    mutation AddDevice($label: String!, $plantId: ID!, $type: DeviceTypeEnum!) {
         addDevice(label: $label, plantId: $plantId, type: $type){
             label
             type

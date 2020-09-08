@@ -1,15 +1,17 @@
 import React from 'react';
+import {Plant} from "../../types";
+
 type Props = {
     id: any,
     plantId: any,
     label: string,
     type: string,
-    plant: object
+    plant: Plant
 }
 
 const DeviceListItem = ({ id, label, plant }: Props) => {
-    console.log(plant)
-    return <li>{label}</li>
+    return (
+        <li>{label}</li>)
 };
 
 export default DeviceListItem;

@@ -1,16 +1,11 @@
 import React from 'react';
 import { useQuery } from "@apollo/client";
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 import styles from './DevicesList.module.scss'
 import {GET_DEVICES} from "../../queries/devices";
 import DeviceListItem from "../DeviceListItem";
-
-type Device = {
-    id: any,
-    plantId: any,
-    label: string,
-    type: string,
-    plant: object,
-}
+import {Device} from "../../types";
 
 interface DevicesData {
     devices: Device[],
@@ -21,26 +16,23 @@ const DevicesList = () => {
     const { data, loading } = useQuery<DevicesData>(GET_DEVICES);
 
     if (loading) {
-        return null;
+        return <CircularProgress />;
     }
 
     if (!data) return <div>No data!</div>;
-
     return (
         <div className={styles.devicesList}>
             <h2>Devices List</h2>
-
             <h3>Sensor Devices</h3>
             {data.devices
-                .filter(({ type }) => type ==='sensor')
+                .filter(({ type }) => type ==='SENSOR')
                 .map((device) => {
                 return <DeviceListItem key={device.id} {...device}/>
             })}
 
             <h3>Tap Devices</h3>
-
             {data.devices
-                .filter(({ type }) => type === 'tap')
+                .filter(({ type }) => type === 'TAP')
                 .map((device) => {
                 return <DeviceListItem key={device.id} {...device}/>
             })}
