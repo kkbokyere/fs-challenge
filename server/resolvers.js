@@ -5,6 +5,9 @@ const resolvers = {
     plants: () => plants,
     devices: () => devices,
     users: () => users,
+    getUserByUsername: ({ username }) => {
+        return users.find(user => user.username === username)
+    },
     addDevice: ({ label, type, plantId }) => {
         const newDevice = { id: uuidv4(), type, label, plantId};
         devices.push(newDevice);

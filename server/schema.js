@@ -15,6 +15,7 @@ const schema = buildSchema(`
     id: ID!, 
     type: String,
     label: String,
+    plant: Plant
     plantId: ID!
   }
 
@@ -22,6 +23,7 @@ const schema = buildSchema(`
     plants: [Plant],
     devices: [Device]
     users: [User]
+    getUserByUsername(username: String!): User
   }
   
   type Mutation {
