@@ -10,3 +10,17 @@ export const GET_DEVICES = gql`
         }
     }
 `;
+
+export const ADD_DEVICE = gql`
+    mutation AddDevice($label: String!, $plantId: ID!, $type: String!) {
+        addDevice(label: $label, plantId: $plantId, type: $type){
+            label
+            type
+            plantId
+            plant {
+                name
+                id
+            }
+        }
+    }
+`;
