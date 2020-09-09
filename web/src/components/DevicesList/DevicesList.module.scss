@@ -2,13 +2,18 @@
 .devicesList {
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: 300px 300px;
+  @include desktop {
+    grid-template-columns: 300px 300px;
+  }
 }
 
 .list {
   width: 100%;
-  max-width: 300px;
   background: $white;
+  @include tablet {
+    max-width: 300px;
+
+  }
 }
 
 .subheader {
