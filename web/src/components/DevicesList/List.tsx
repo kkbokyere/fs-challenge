@@ -1,6 +1,10 @@
 import React from 'react';
+import List from '@material-ui/core/List';
+import ListSubheader from '@material-ui/core/ListSubheader';
+
 import DeviceListItem from "../DeviceListItem";
 import {Device} from "../../types";
+import styles from './DevicesList.module.scss'
 
 type Props = {
     devices: Device[],
@@ -8,20 +12,24 @@ type Props = {
     heading?: String
 }
 
-const List = ({ devices, filterType, heading} : Props) => {
+const DeviceList = ({ devices, filterType, heading} : Props) => {
     return (
         <div>
-            <h3>{heading}</h3>
-
-            <ul>
+            <List
+                subheader={
+                    <ListSubheader component="label" id="nested-list-subheader" className={styles.subheader}>
+                        {heading}
+                    </ListSubheader>
+                }
+                className={styles.list}>
             {devices
                 .filter((device) => device.type === filterType)
                 .map((device) => {
                     return <DeviceListItem key={device.id} {...device}/>
                 })}
-        </ul>
+        </List>
         </div>
     )
 };
 
-export default List;
+export default DeviceList;

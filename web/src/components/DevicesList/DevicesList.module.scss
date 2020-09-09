@@ -1,4 +1,16 @@
 @import "../../styles/variables";
 .devicesList {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 300px 300px;
+}
 
+.list {
+  width: 100%;
+  max-width: 300px;
+  background: $white;
+}
+
+.subheader {
+  font-weight: bold;
 }

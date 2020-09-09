@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import Button from '@material-ui/core/Button';
 
 import Header from "./components/Header";
 import Layout from "./components/Layout/Layout";
 import DevicesList from "./components/DevicesList";
-import Modal from '@material-ui/core/Modal';
 import './styles/App.scss'
 import NewDeviceForm from "./components/NewDeviceForm";
+import SimpleModal from "./components/SimpleModal";
 
 function App() {
     const [openModal, setOpenModal] = useState(false);
@@ -21,20 +22,18 @@ function App() {
     <div className="App">
       <Header/>
       <Layout>
-          <button type="button" onClick={handleOpen}>
+          <Button onClick={handleOpen} variant="contained" color="primary">
               Add Device
-          </button>
+          </Button>
           <DevicesList/>
       </Layout>
-        <Modal
-            data-testid="new-device-modal"
-            open={openModal}
-            onClose={handleClose}
-            aria-labelledby="simple-modal-title"
-            aria-describedby="simple-modal-description"
+        <SimpleModal
+            title="Add Device Form"
+            openModal={openModal}
+            handleClose={handleClose}
         >
-            {<React.Fragment><NewDeviceForm/></React.Fragment>}
-        </Modal>
+            <NewDeviceForm handleOnAddDevice={handleClose}/>
+        </SimpleModal>
     </div>
   );
 }

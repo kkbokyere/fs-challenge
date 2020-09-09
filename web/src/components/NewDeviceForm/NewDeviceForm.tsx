@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
-
-import Select from '@material-ui/core/Select';
 import {Plant, DeviceTypeEnum} from "../../types";
 import {useQuery, useMutation} from "@apollo/client";
 import {GET_PLANTS} from "../../queries/plants";
@@ -16,7 +14,11 @@ interface PlantsData {
     loading: boolean
 }
 
-const NewDeviceForm = () => {
+type Props = {
+    handleOnAddDevice: (response: any) => void
+}
+
+const NewDeviceForm = ({ handleOnAddDevice }: Props) => {
     const { data, loading } = useQuery<PlantsData>(GET_PLANTS);
     const [addDevice] = useMutation(ADD_DEVICE, {
         refetchQueries: [{ query: GET_DEVICES }],
@@ -44,40 +46,53 @@ const NewDeviceForm = () => {
     };
     const handleOnSubmitForm = (event: React.FormEvent<EventTarget>) => {
         event.preventDefault();
-        addDevice({ variables: { label, type, plantId: plant} });
+        addDevice({ variables: { label, type, plantId: plant} }).then((response) => {
+            handleOnAddDevice(response)
+        });
     };
     return (
-        <div className={styles.form} data-testid="new-device-form">
-        <form onSubmit={handleOnSubmitForm} >
+        <div data-testid="new-device-form">
+        <form onSubmit={handleOnSubmitForm} className={styles.form} >
             <div>
             <TextField
                 data-testid="label-input"
                 id="label-input"
                 label="Device Label"
+                fullWidth
+                placeholder="e.g. My custom device"
+                variant="outlined"
                 defaultValue={label}
                 onChange={handleOnChangeLabel}
             />
             </div>
             <div>
-            <Select
-                data-testid="type-select"
-                id="type-select"
-                value={type}
-                onChange={handleOnChangeType}
-            >
+                <TextField
+                    data-testid="type-select"
+                    id="type-select"
+                    select
+                    fullWidth
+                    label="Sensor Type"
+                    value={type}
+                    onChange={handleOnChangeType}
+                    variant="outlined"
+                >
                 <MenuItem value={DeviceTypeEnum.SENSOR}>Sensor</MenuItem>
                 <MenuItem value={DeviceTypeEnum.TAP}>Tap</MenuItem>
-            </Select>
+            </TextField>
             </div>
             <div>
-            <Select
-                data-testid="plant-select"
-                id="plant-select"
-                value={plant}
-                onChange={handleOnChangePlant}
-            >
+                <TextField
+                    data-testid="plant-select"
+                    id="plant-select"
+                    select
+                    fullWidth
+                    label="Plant"
+                    value={plant}
+                    onChange={handleOnChangePlant}
+                    variant="outlined"
+                >
                 {data && data.plants.map(plant => <MenuItem key={plant.id} value={plant.id}>{plant.name}</MenuItem>)}
-            </Select>
+            </TextField>
             </div>
             <Button data-testid="submit-btn" variant="contained" color="primary" type="submit">
                 Add Device

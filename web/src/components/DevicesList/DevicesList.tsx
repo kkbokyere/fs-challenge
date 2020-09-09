@@ -30,4 +30,4 @@ const DevicesList = () => {
     );
 };
 
-export default DevicesList;
+export default React.memo(DevicesList);

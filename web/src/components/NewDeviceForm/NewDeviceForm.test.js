@@ -51,7 +51,6 @@ describe('DevicesList Tests', () => {
         const plantSelect = await getByTestId('plant-select');
         const submitBtn = await getByTestId('submit-btn');
         labelInput.value = "My Label";
-        console.log(labelInput)
         fireEvent.change(labelInput)
 
     });
