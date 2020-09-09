@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitForElement } from '../../test/helper'
+import { render } from '../../test/helper'
 import DevicesList from './DevicesList';
 
 
@@ -17,19 +17,19 @@ export const mocks = [
                 username: 'Tom Cruise',
             }
         },
-        result: () => getByUsernameResponse,
+        result: () => (getByUsernameResponse)
     },
     {
         request: {
             query: GET_DEVICES
         },
-        result: () => devicesResponse
+        result: () => (devicesResponse)
     },
     {
         request: {
             query: GET_PLANTS
         },
-        result: () => plantsResponse
+        result: () => (plantsResponse)
     }
 ];
 
@@ -46,7 +46,7 @@ describe('DevicesList Tests', () => {
 
     it('should render full DevicesList', async () => {
         const { getByTestId, getByText } = setup();
-        await new Promise(resolve => setTimeout(resolve, 0)); // wait for response
+        await new Promise(resolve => setTimeout(resolve, 100)); // wait for response
 
         const devicesList = await getByTestId('devices-list');
         const deviceLabel = await getByText('My chilli plants');

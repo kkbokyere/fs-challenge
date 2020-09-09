@@ -12,10 +12,10 @@
   background: $white;
   @include tablet {
     max-width: 300px;
-
   }
 }
 
 .subheader {
+  font-size: 16px;
   font-weight: bold;
 }

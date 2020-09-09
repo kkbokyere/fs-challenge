@@ -10,7 +10,7 @@ function render(
 ) {
     function Wrapper({children}) {
         return (
-            <MockedProvider {...renderOptions}>
+            <MockedProvider {...renderOptions} >
                 {children}
             </MockedProvider>
         )

@@ -14,21 +14,19 @@ type Props = {
 
 const DeviceList = ({ devices, filterType, heading} : Props) => {
     return (
-        <div>
-            <List
-                subheader={
-                    <ListSubheader component="label" id="nested-list-subheader" className={styles.subheader}>
-                        {heading}
-                    </ListSubheader>
-                }
-                className={styles.list}>
+        <List
+            subheader={
+                <ListSubheader component="div" id="nested-list-subheader">
+                    <span className={styles.subheader}>{heading}</span>
+                </ListSubheader>
+            }
+            className={styles.list}>
             {devices
                 .filter((device) => device.type === filterType)
                 .map((device) => {
                     return <DeviceListItem key={device.id} {...device}/>
                 })}
         </List>
-        </div>
     )
 };
 

@@ -7,7 +7,8 @@
                 "type": "SENSOR",
                 "label": "My chilli plants",
                 "plant": {
-                    "name": "Chilli"
+                    "name": "Chilli",
+                    "id": "1"
                 }
             }
         ]
