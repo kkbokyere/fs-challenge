@@ -44,9 +44,9 @@ describe('DevicesList Tests', () => {
         expect(loadingSpinner).toBeInTheDocument();
     });
 
-    it('should render full DevicesList', async () => {
+    it('should render full DevicesList when data is loaded', async () => {
         const { getByTestId, getByText } = setup();
-        await new Promise(resolve => setTimeout(resolve, 100)); // wait for response
+        await new Promise(resolve => setTimeout(resolve, 0)); // wait for response
 
         const devicesList = await getByTestId('devices-list');
         const deviceLabel = await getByText('My chilli plants');

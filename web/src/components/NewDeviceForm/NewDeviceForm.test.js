@@ -50,8 +50,8 @@ describe('DevicesList Tests', () => {
         const typeSelect = await getByTestId('type-select');
         const plantSelect = await getByTestId('plant-select');
         const submitBtn = await getByTestId('submit-btn');
-        labelInput.value = "My Label";
-        fireEvent.change(labelInput)
+        expect(plantSelect.children.length).toBe(2)
+        expect(typeSelect.children.length).toBe(2)
 
     });
 

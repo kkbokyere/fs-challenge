@@ -57,6 +57,7 @@ const NewDeviceForm = ({ handleOnAddDevice }: Props) => {
             <TextField
                 data-testid="label-input"
                 id="label-input"
+                type="input"
                 label="Device Label"
                 fullWidth
                 placeholder="e.g. My custom device"

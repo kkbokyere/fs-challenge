@@ -53,5 +53,26 @@ describe('App Tests', () => {
         const deviceModal = await getByTestId('new-device-modal');
         expect(deviceModal).toBeVisible()
     });
+
+    it('should add devices when form is filled', async () => {
+        const { getByTestId, getByText } = setup();
+        await new Promise(resolve => setTimeout(resolve, 0)); // wait for response
+
+        //Open form
+        const addDeviceButton = await screen.findByText('Add Device');
+        fireEvent.click(addDeviceButton);
+
+        // input device details
+        const newDeviceForm = await getByTestId('new-device-form');
+        const labelInput = await getByTestId('label-input');
+        const typeSelect = await getByTestId('type-select');
+        const plantSelect = await getByTestId('plant-select');
+        const submitBtn = await getByTestId('submit-btn');
+        labelInput.value = "My Label";
+        console.log(labelInput)
+        fireEvent.change(labelInput)
+        fireEvent.submit(newDeviceForm)
+
+    });
 });
 
