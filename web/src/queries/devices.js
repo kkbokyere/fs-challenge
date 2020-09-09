@@ -7,6 +7,10 @@ export const GET_DEVICES = gql`
             label
             id
             plantId
+            plant{
+                name
+                id
+            }
         }
     }
 `;

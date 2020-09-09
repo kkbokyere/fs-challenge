@@ -24,7 +24,7 @@ const DeviceListItem = ({ id, label, plant }: Props) => {
                     <ImageIcon />
                 </Avatar>
             </ListItemAvatar>
-            <ListItemText primary={label}/>
+            <ListItemText primary={label} secondary={plant.name}/>
             <Divider/>
         </ListItem>)
 };
