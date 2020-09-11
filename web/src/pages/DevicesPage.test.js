@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render, screen, fireEvent } from '../test/helper'
+import {render, screen, fireEvent, mocks, wait} from '../test/helper'
 import DevicesPage from './DevicesPage';
 
 
@@ -40,14 +40,17 @@ describe('App Tests', () => {
         const labelInput = await getByTestId('label-input');
         const typeSelect = await getByTestId('type-select');
         const plantSelect = await getByTestId('plant-select');
-        const submitBtn = await getByTestId('submit-btn');
-        labelInput.value = "My test Label";
-        typeSelect.value = "SENSOR";
-        plantSelect.value = "1";
-        fireEvent.change(labelInput);
-        fireEvent.change(typeSelect);
-        fireEvent.change(plantSelect);
-        fireEvent.submit(newDeviceForm)
+        fireEvent.change(labelInput, { target: { value: "My test Label"}});
+        fireEvent.change(typeSelect, { target: { value: "SENSOR" }});
+        fireEvent.change(plantSelect, { target: { value: "1" }});
+        fireEvent.submit(newDeviceForm);
+        await new Promise(resolve => setTimeout(resolve, 0)); // wait for form to open
+        // const addDeviceMutationMock = mocks[0].newData;
+        // await wait(() => expect(addDeviceMutationMock).toHaveBeenCalled());
+        //
+        // console.log(addDeviceMutationMock)
+        // expect(addDeviceMutationMock).toHaveBeenCalled()
+
 
     });
 });

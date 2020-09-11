@@ -47,8 +47,8 @@ describe('DevicesList Tests', () => {
         await new Promise(resolve => setTimeout(resolve, 0)); // wait for response
         const newDeviceForm = await getByTestId('new-device-form');
         const labelInput = await getByTestId('label-input');
-        const typeSelect = await getByTestId('type-select');
-        const plantSelect = await getByTestId('plant-select');
+        const typeSelect = await getByTestId('type-select-container');
+        const plantSelect = await getByTestId('plant-select-container');
         const submitBtn = await getByTestId('submit-btn');
         expect(plantSelect.children.length).toBe(2);
         expect(typeSelect.children.length).toBe(2)

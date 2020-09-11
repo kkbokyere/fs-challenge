@@ -45,6 +45,7 @@ const NewDeviceForm = ({ handleOnAddDevice }: Props) => {
         setLabel(event.target.value)
     };
     const handleOnSubmitForm = (event: React.FormEvent<EventTarget>) => {
+        console.log()
         event.preventDefault();
         addDevice({ variables: { label, type, plantId: plant} }).then((response) => {
             handleOnAddDevice(response)
@@ -55,7 +56,9 @@ const NewDeviceForm = ({ handleOnAddDevice }: Props) => {
         <form onSubmit={handleOnSubmitForm} className={styles.form} >
             <div>
             <TextField
-                data-testid="label-input"
+                inputProps={{
+                    'data-testid':"label-input"
+                }}
                 id="label-input"
                 type="input"
                 label="Device Label"
@@ -68,7 +71,10 @@ const NewDeviceForm = ({ handleOnAddDevice }: Props) => {
             </div>
             <div>
                 <TextField
-                    data-testid="type-select"
+                    data-testid="type-select-container"
+                    inputProps={{
+                        'data-testid':"type-select"
+                    }}
                     id="type-select"
                     select
                     fullWidth
@@ -83,7 +89,10 @@ const NewDeviceForm = ({ handleOnAddDevice }: Props) => {
             </div>
             <div>
                 <TextField
-                    data-testid="plant-select"
+                    data-testid="plant-select-container"
+                    inputProps={{
+                        'data-testid':"plant-select"
+                    }}
                     id="plant-select"
                     select
                     fullWidth

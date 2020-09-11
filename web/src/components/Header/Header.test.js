@@ -17,7 +17,7 @@ describe('Header Tests', () => {
     it('should render full Header', async () => {
         const { getByText } = setup({ user: { username: 'Tom Cruise'}});
         await new Promise(resolve => setTimeout(resolve, 0)); // wait for response
-
+        
         const deviceLabel = await getByText('You\'re logged in as: Tom Cruise');
         const logoutBtn = await getByText('Logout');
         expect(logoutBtn).toBeInTheDocument();

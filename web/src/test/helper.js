@@ -5,13 +5,37 @@ import {render as rtlRender } from '@testing-library/react'
 import { MockedProvider } from "@apollo/client/testing";
 import {GET_USER_BY_USERNAME, LOGIN_USER} from "../queries/users";
 import getByUsernameResponse from "./__mocks__/getByUsernameResponse";
-import {GET_DEVICES} from "../queries/devices";
+import {ADD_DEVICE, GET_DEVICES} from "../queries/devices";
 import devicesResponse from "./__mocks__/devicesResponse";
 import {GET_PLANTS} from "../queries/plants";
 import plantsResponse from "./__mocks__/plantsResponse";
 import loginUserResponse from "./__mocks__/loginUserResponse";
 
 export const mocks = [
+    {
+        request: {
+            query: ADD_DEVICE,
+            variables: {
+                label: 'My test Label',
+                type: 'SENSOR',
+                plantId: '1',
+            }
+        },
+        newData: jest.fn(() => ({
+            data: {
+                addDevice: {
+                    "id": "32322",
+                    "plantId": "1",
+                    "type": "SENSOR",
+                    "label": "My test Label",
+                    "plant": {
+                        "name": "Chilli",
+                        "id": "1"
+                    }
+                },
+            },
+        }))
+    },
     {
         request: {
             query: GET_USER_BY_USERNAME,
