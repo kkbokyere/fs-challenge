@@ -19,12 +19,20 @@ describe('App Tests', () => {
 
 
     it('should login user', async () => {
-        const { asFragment } = setup();
+        const { asFragment, findByText, findByTestId } = setup();
 
-        const loginBtn = await screen.findByText('Log in');
+        const userInput = await screen.findByTestId('login-username');
+        const passwordInput = await screen.findByTestId('login-password');
+        const loginForm = await screen.findByTestId('login-form');
+
+        fireEvent.change(userInput, { target: { value: "Tom Cruise"}});
+        fireEvent.change(passwordInput, { target: { value: "thisappwillselfdistruct" }});
+        fireEvent.submit(loginForm);
+        await new Promise(resolve => setTimeout(resolve, 0)); // wait for response
+        const userLabel = await screen.findByText('You\'re logged in as: Tom Cruise');
 
         expect(asFragment()).toMatchSnapshot();
-        expect(loginBtn).toBeInTheDocument();
+        expect(userLabel).toBeInTheDocument();
     });
 });
 

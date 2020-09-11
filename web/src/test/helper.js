@@ -35,7 +35,11 @@ export const mocks = [
     },
     {
         request: {
-            query: LOGIN_USER
+            query: LOGIN_USER,
+            variables: {
+                username: 'Tom Cruise',
+                password: 'thisappwillselfdistruct',
+            }
         },
         result: () => loginUserResponse
     }
