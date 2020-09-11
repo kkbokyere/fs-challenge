@@ -1,26 +1,13 @@
 import React from 'react';
-import { render, waitForElement } from '../../test/helper'
+import { render, waitForElement, fireEvent } from '../../test/helper'
 import Header from './Header';
-import {GET_USER_BY_USERNAME} from "../../queries/users";
-import getByUsernameResponse from '../../test/__mocks__/getByUsernameResponse'
-export const mocks = [
-    {
-        request: {
-            query: GET_USER_BY_USERNAME,
-            variables: {
-                username: 'Tom Cruise',
-            }
-        },
-        result: () => getByUsernameResponse,
-    }
-];
 
 describe('Header Tests', () => {
-    const setup = (componentProps = {}, renderProps = { mocks }) => {
+    const setup = (componentProps = {}, renderProps) => {
         return render(<Header {...componentProps}/>, renderProps);
     };
     it('should render initial loading Header', async () => {
-        const { asFragment, getByTestId } = setup();
+        const { asFragment, getByTestId } = setup({ user: { username: 'Tom Cruise'}});
 
         const loadingSpinner = await waitForElement(() => getByTestId('loading-spinner'));
         expect(asFragment()).toMatchSnapshot();
@@ -28,11 +15,27 @@ describe('Header Tests', () => {
     });
 
     it('should render full Header', async () => {
-        const { getByText } = setup();
+        const { getByText } = setup({ user: { username: 'Tom Cruise'}});
         await new Promise(resolve => setTimeout(resolve, 0)); // wait for response
 
         const deviceLabel = await getByText('You\'re logged in as: Tom Cruise');
+        const logoutBtn = await getByText('Logout');
+        expect(logoutBtn).toBeInTheDocument();
         expect(deviceLabel).toBeInTheDocument();
+    });
+
+
+    it('should logout user', async () => {
+        const logoutSpy = jest.fn();
+        const { getByText } = setup({
+            user: { username: 'Tom Cruise'},
+            handleLogout: logoutSpy
+        });
+        await new Promise(resolve => setTimeout(resolve, 0)); // wait for response
+
+        const logoutBtn = await getByText('Logout');
+        fireEvent.click(logoutBtn);
+        expect(logoutSpy).toHaveBeenCalled()
     });
 
 });

@@ -3,3 +3,12 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect';
+beforeEach(() => {
+    Object.defineProperty(window, "localStorage", {
+        value: {
+            getItem: jest.fn(() => null),
+            setItem: jest.fn(() => null)
+        },
+        writable: true
+    });
+});
