@@ -26,11 +26,24 @@ $ cd frontend-interview-challenge/web
 $ yarn install
 ```
 
-**3. Run Application.**
+```
+$ cd frontend-interview-challenge/server
+$ yarn install
+```
+
+**3. Run Server.**
+
+```
+$ cd frontend-interview-challenge/server
+$ yarn start
+```
+
+**4. Run Application.**
 
 Once the node modules have all been installed and npm has done it's thing, that's it. To open up a local development environment, run:
 
 ```
+$ cd frontend-interview-challenge/web
 $ yarn start
 ```
 
@@ -53,7 +66,6 @@ No CI/CD pipeline at the moment.
 - [React](https://reactjs.org/)
 - [Create React App](https://create-react-app.dev/)
 - [Redux](https://redux.js.org)
-- [Redux Thunk](https://github.com/reduxjs/redux-thunk)
 - [CSS Modules](https://github.com/css-modules/css-modules)
 - [Material UI](https://material-ui.com/)
 
@@ -65,7 +77,8 @@ Everything about my approach, is forward thinking towards scaling this applicati
 # Improvements / Retrospective Review
 
 - Would have used Cypress for E2E testing
-- 100% test coverage
+- 100% test coverage for the web
+- 100% test coverage for the server
 - create a better Error handler - only catching one simple error scenario
 - implement typescript to better type definitions
 - Would have considered creating a proper [SMACSS](http://smacss.com/) architecture for base CSS styles such as layout. 
