@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { render, screen, fireEvent } from '../src/test/helper'
 import App from './App';
 import {GET_DEVICES, ADD_DEVICE} from "./queries/devices";
@@ -62,15 +63,21 @@ describe('App Tests', () => {
         const addDeviceButton = await screen.findByText('Add Device');
         fireEvent.click(addDeviceButton);
 
+        await new Promise(resolve => setTimeout(resolve, 0)); // wait for form to open
+
         // input device details
         const newDeviceForm = await getByTestId('new-device-form');
         const labelInput = await getByTestId('label-input');
         const typeSelect = await getByTestId('type-select');
         const plantSelect = await getByTestId('plant-select');
         const submitBtn = await getByTestId('submit-btn');
-        labelInput.value = "My Label";
-        console.log(labelInput)
+        labelInput.value = "My test Label";
+        typeSelect.value = "SENSOR";
+        plantSelect.value = "1";
+        console.log(plantSelect.children.length)
         fireEvent.change(labelInput)
+        fireEvent.change(typeSelect);
+        fireEvent.change(plantSelect)
         fireEvent.submit(newDeviceForm)
 
     });

@@ -1,39 +1,44 @@
-import React, { useState } from 'react';
-import Button from '@material-ui/core/Button';
-
-import Header from "./components/Header";
-import Layout from "./components/Layout/Layout";
-import DevicesList from "./components/DevicesList";
+import React, {useState} from 'react';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Redirect,
+    Route
+} from "react-router-dom";
 import './styles/App.scss'
-import NewDeviceForm from "./components/NewDeviceForm";
-import SimpleModal from "./components/SimpleModal";
+import LoginPage from "./pages/LoginPage";
+import DevicesPage from "./pages/DevicesPage";
+import PrivateRoute from "./components/PrivateRoute";
+import Header from "./components/Header";
+import Layout from "./components/Layout";
 
 function App() {
-    const [openModal, setOpenModal] = useState(false);
-
-    const handleOpen = () => {
-        setOpenModal(true);
+    const authenticatedUser = JSON.parse(localStorage.getItem('user') as string);
+    const [isAuthenticated, setIsAuthenticated] = useState(authenticatedUser);
+    const handleLoginUser = (user: object) => {
+        localStorage.setItem('user', JSON.stringify(user));
+        setIsAuthenticated(!!user);
+    };
+    const handleLogoutUser = () => {
+        localStorage.clear();
+        setIsAuthenticated(false);
     };
 
-    const handleClose = () => {
-        setOpenModal(false);
-    };
-  return (
+    return (
     <div className="App">
-      <Header/>
-      <Layout>
-          <Button onClick={handleOpen} variant="contained" color="primary">
-              Add Device
-          </Button>
-          <DevicesList/>
-      </Layout>
-        <SimpleModal
-            title="Add Device Form"
-            openModal={openModal}
-            handleClose={handleClose}
-        >
-            <NewDeviceForm handleOnAddDevice={handleClose}/>
-        </SimpleModal>
+        <Router>
+            {isAuthenticated && <Header user={authenticatedUser} handleLogout={handleLogoutUser}/>}
+            <Layout>
+                <Switch>
+                    <Route exact path="/">
+                        {isAuthenticated ? <Redirect to="/devices" /> : <LoginPage onHandleLogin={handleLoginUser} />}
+                    </Route>
+                    <PrivateRoute path="/devices" isAuthenticated={isAuthenticated}>
+                        <DevicesPage />
+                    </PrivateRoute>
+                </Switch>
+            </Layout>
+        </Router>
     </div>
   );
 }

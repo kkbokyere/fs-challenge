@@ -1,4 +1,6 @@
 import * as React from "react";
+import { act } from 'react-dom/test-utils';
+
 import {render as rtlRender } from '@testing-library/react'
 import { MockedProvider } from "@apollo/client/testing";
 

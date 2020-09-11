@@ -30,6 +30,7 @@ const typeDefs = gql`
   
   type Mutation {
     addDevice(type: DeviceTypeEnum!, plantId: ID!, label: String!): Device
+    loginUser(username: String!, password: String!): User
   }
   
 `;

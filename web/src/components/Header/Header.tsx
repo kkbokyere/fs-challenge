@@ -16,9 +16,16 @@ interface UsersData {
     error: any
 }
 
-const Header = () => {
+type Props = {
+    handleLogout: () => void
+    user: {
+        username: string
+    }
+}
+
+const Header = ({ handleLogout, user }: Props) => {
     const { data, loading, error } = useQuery<UsersData>(GET_USER_BY_USERNAME, {
-        variables: { username: 'Tom Cruise'},
+        variables: { username: user.username},
         errorPolicy: "all"
     });
     if (loading) {
@@ -30,6 +37,7 @@ const Header = () => {
     return (
         <div className={styles.header}>
             You're logged in as: {data && data.getUserByUsername.username}
+            <button onClick={handleLogout}>Logout</button>
         </div>
     );
 };

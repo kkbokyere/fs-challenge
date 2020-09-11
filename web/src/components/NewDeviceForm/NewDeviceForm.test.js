@@ -50,7 +50,7 @@ describe('DevicesList Tests', () => {
         const typeSelect = await getByTestId('type-select');
         const plantSelect = await getByTestId('plant-select');
         const submitBtn = await getByTestId('submit-btn');
-        expect(plantSelect.children.length).toBe(2)
+        expect(plantSelect.children.length).toBe(2);
         expect(typeSelect.children.length).toBe(2)
 
     });
