@@ -42,9 +42,4 @@ const Header = ({ handleLogout, user }: Props) => {
     );
 };
 
-
-Header.propTypes = {
-    user: PropTypes.any,
-};
-
 export default Header;
