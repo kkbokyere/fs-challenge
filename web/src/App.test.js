@@ -19,7 +19,7 @@ describe('App Tests', () => {
 
 
     it('should login user', async () => {
-        const { asFragment, findByText, findByTestId } = setup();
+        const { asFragment } = setup();
 
         const userInput = await screen.findByTestId('login-username');
         const passwordInput = await screen.findByTestId('login-password');
