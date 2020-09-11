@@ -42,10 +42,10 @@ function LoginPage({ onHandleLogin = () => {} } : Props) {
             {loginError && <Alert severity="error">{loginError}</Alert>}
             <form onSubmit={handleLogin}>
                 <div>
-                    <Input placeholder="Username" type="text" onChange={(e) => setUsername(e.currentTarget.value)}/>
+                    <Input required placeholder="Username" type="text" onChange={(e) => setUsername(e.currentTarget.value)}/>
                 </div>
                 <div>
-                    <Input placeholder="Password" type="password" onChange={e => setPassword(e.currentTarget.value)}/>
+                    <Input required placeholder="Password" type="password" onChange={e => setPassword(e.currentTarget.value)}/>
                 </div>
                     <Button type="submit" variant="contained" color="primary">Log in</Button>
             </form>

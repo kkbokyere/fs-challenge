@@ -21,7 +21,7 @@ const resolvers = {
     },
     Mutation: {
         loginUser: (parent, { username, password }) => {
-            return users.find(user => (user.username === username && user.password === password))
+            return users.find(user => (user.username.toLowerCase() === username.toLowerCase() && user.password === password))
         },
         addDevice: (parent, { label, type, plantId }) => {
             const newDevice = {id: uuidv4(), type, label, plantId};
